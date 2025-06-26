@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+
+    <style>
+        .count-input {
+            display: inline-flex;
+            width: 80px;
+            height: 30px;
+            background-color: #f9f9f9;
+
+            &,
+            & * {
+                box-sizing: border-box;
+            }
+
+            & input[type="number"] {
+                -webkit-appearance: textfield;
+                -moz-appearance: textfield;
+                appearance: textfield;
+                border: 0px;
+                padding: 0;
+                box-shadow: none !important;
+                font-family: sans-serif;
+                font-size: 14px;
+                width: 30px;
+                height: 100%;
+                text-align: center;
+                color: #777777;
+                background-color: #f9f9f9;
+            }
+
+            & input[type=number]::-webkit-inner-spin-button,
+            & input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+            }
+
+            & button {
+                position: relative;
+                outline: none;
+                -webkit-appearance: none;
+                background-color: transparent;
+                border: none;
+                align-items: center;
+                justify-content: center;
+                width: 30px;
+                height: 100%;
+                cursor: pointer;
+                margin: 0;
+                font-family: "Helvetica";
+                font-size: 16px;
+                color: #999999;
+                font-weight: normal;
+                position: relative;
+
+                &:hover:after {
+                    background-color: #eee;
+                }
+
+                &:after {
+                    display: inline-flex;
+                    position: absolute;
+                    justify-content: center;
+                    align-items: center;
+                    top: 0px;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    height: 100%;
+                    bottom: 0px;
+                    margin: auto;
+                    content: '−';
+                }
+
+                &.plus-button:after {
+                    content: '+';
+                }
+            }
+        }
+    </style>
+
+    <style>
+        #id-photo {
+            width: 350px;
+            height: 200px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #bannana-wrapper {
+            position: absolute;
+            opacity: 0.25;
+            inset: 5%;
+            overflow: hidden;
+        }
+
+        #bannana {
+            object-fit: contain;
+            object-position: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        input {
+            cursor: text;
+            background-color: lightgrey;
+        }
+
+        label {
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-100">
+    <form class="container mx-auto py-5">
+
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
+
+        <div class="mt-10 sm:mt-0">
+            <div class="md:grid md:grid-cols-3 md:gap-6">
+                <div class="md:col-span-1">
+                    <div class="px-4 sm:px-0">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900" style="font-weight: bold;">פרטים אישיים
+                        </h3>
+                    </div>
+                </div>
+                <div class="mt-5 md:mt-0 md:col-span-2">
+                    <div>
+                        <div class="shadow overflow-hidden sm:rounded-md">
+                            <div class="px-4 py-5 bg-white sm:p-6">
+                                <div class="grid grid-cols-6 gap-6">
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="return_date"
+                                            class="block text-sm font-medium text-gray-700">תאריך</label>
+                                        <input type="date" id="return_date" name="return_date"
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                            required>
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="id" class="block text-sm font-medium text-gray-700">ת.ז</label>
+                                        <input type="text" id="id" name="id" pattern="\d{9}"
+                                            title="מספר תעודת זהות חוקי" required
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="phone" class="block text-sm font-medium text-gray-700">טלפון</label>
+                                        <input type="tel" id="phone" name="phone" pattern="^05\d{8}$"
+                                            title="טלפון בפורמט תקני" required
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3" style="opacity:0;">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="event_date" class="block text-sm font-medium text-gray-700">תאריך
+                                            האירוע</label>
+                                        <input type="date" id="event_date" name="event_date" required
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="event_address" class="block text-sm font-medium text-gray-700">כתובת
+                                            האירוע</label>
+                                        <input type="text" id="event_address" name="event_address" required
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="pickup_date" class="block text-sm font-medium text-gray-700">איסוף
+                                            עצמי מתאריך:</label>
+                                        <input type="date" id="pickup_date" name="pickup_date" required
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="pickup_time"
+                                            class="block text-sm font-medium text-gray-700">בשעה:</label>
+                                        <input type="time" id="pickup_time" name="pickup_time" required
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="return_date" class="block text-sm font-medium text-gray-700">עד
+                                            תאריך:</label>
+                                        <input type="date" id="return_date" name="return_date" required
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="return_time"
+                                            class="block text-sm font-medium text-gray-700">בשעה:</label>
+                                        <input type="time" id="return_time" name="return_time" required
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="price" class="block text-sm font-medium text-gray-700">מחיר
+                                            ב-&#8362; (לא כולל
+                                            מע"מ)</label>
+                                        <input type="number" id="price" name="price" min="0" required
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3" style="display: hidden"></div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">
+                                            צילום תעודת זהות
+                                        </label>
+                                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
+                                            id="id-photo">
+
+                                            <div id="bannana-wrapper">
+                                                <img id="bannana">
+                                            </div>
+
+                                            <div class="space-y-1 text-center">
+                                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor"
+                                                    fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                                    <path
+                                                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+
+
+                                                <div class="flex text-sm text-gray-600">
+                                                    <label for="file-upload"
+                                                        class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                                        <span>העלה קובץ תמונה</span>
+                                                        <input id="file-upload" name="file-upload" type="file"
+                                                            class="sr-only" accept="image/*" required>
+                                                    </label>
+                                                    <p class="pl-1"> או גרור</p>
+                                                </div>
+                                                <p class="text-xs text-gray-500">
+                                                    PNG, JPG, GIF up to 10MB
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden sm:block" aria-hidden="true">
+                <div class="py-5">
+                    <div class="border-t border-gray-200"></div>
+                </div>
+            </div>
+
+
+            <div class="md:grid md:grid-cols-3 md:gap-6">
+                <div class="md:col-span-1">
+                    <div class="px-4 sm:px-0">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900" style="font-weight: bold;">ציוד - פלטות
+                            ודי-ג'יי
+                        </h3>
+                    </div>
+                </div>
+                <div class="mt-5 md:mt-0 md:col-span-2">
+                    <div>
+                        <div class="shadow overflow-hidden sm:rounded-md">
+                            <div class="px-4 py-5 bg-white sm:p-6">
+                                <div class="grid grid-cols-6 gap-6">
+
+
+                                    <div class="col-span-6 sm:col-span-3"
+                                        style="display: flex; align-items: center; gap: 10px">
+                                        <label for="platot1" class="block text-sm font-medium text-gray-700">
+                                            פלטה פיוניר 3000 – כוללת 2 נגנים ומיקסר 900NXS2 / A9
+                                        </label>
+                                        <div style="display: flex; justify-content: center;">
+                                            <div class="count-input">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                <input class="quantity" min="0" id="platot1" name="platot1" value="0"
+                                                    type="number">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    class="plus-button"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3" style="display: hidden"></div>
+
+                                    <div class="col-span-6 sm:col-span-3"
+                                        style="display: flex; align-items: center; gap: 10px">
+                                        <label for="platot2" class="block text-sm font-medium text-gray-700">
+                                            פלטה פיוניר 2000NXS2 – כוללת 2 נגנים, מיקסר 900NXS / 750MK2, כולל קייסים
+                                        </label>
+                                        <div style="display: flex; justify-content: center;">
+                                            <div class="count-input">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                <input class="quantity" min="0" id="platot2" name="platot2" value="0"
+                                                    type="number">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    class="plus-button"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3" style="display: hidden"></div>
+
+                                    <div class="col-span-6 sm:col-span-3"
+                                        style="display: flex; align-items: center; gap: 10px">
+                                        <label for="platot3" class="block text-sm font-medium text-gray-700">
+                                            פלטה פיוניר 900NXS – כוללת 2 נגנים, מיקסר 750MK2, כולל קייסים
+                                        </label>
+                                        <div style="display: flex; justify-content: center;">
+                                            <div class="count-input">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                <input class="quantity" min="0" id="platot3" name="platot3" value="0"
+                                                    type="number">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    class="plus-button"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3" style="display: hidden"></div>
+
+                                    <div class="col-span-6 sm:col-span-3"
+                                        style="display: flex; align-items: center; gap: 10px">
+                                        <label for="platot4" class="block text-sm font-medium text-gray-700">
+                                            קונטרולר פיוניר RX3 – כולל כיסוי
+                                        </label>
+                                        <div style="display: flex; justify-content: center;">
+                                            <div class="count-input">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                <input class="quantity" min="0" id="platot4" name="platot4" value="0"
+                                                    type="number">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    class="plus-button"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3" style="display: hidden"></div>
+
+                                    <div class="col-span-6 sm:col-span-3"
+                                        style="display: flex; align-items: center; gap: 10px">
+                                        <label for="platot5" class="block text-sm font-medium text-gray-700">
+                                            עמדת DJ פרימיום – 2 נגנים ומיקסר בצבע שחור / לבן
+                                        </label>
+                                        <div style="display: flex; justify-content: center;">
+                                            <div class="count-input">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                <input class="quantity" min="0" id="platot5" name="platot5" value="0"
+                                                    type="number">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    class="plus-button"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3" style="display: hidden"></div>
+
+                                    <div class="col-span-6 sm:col-span-3"
+                                        style="display: flex; align-items: center; gap: 10px">
+                                        <label for="platot6" class="block text-sm font-medium text-gray-700">
+                                            עמדת DJ פרימיום – 4 נגנים ומיקסר בצבע שחור
+                                        </label>
+                                        <div style="display: flex; justify-content: center;">
+                                            <div class="count-input">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                <input class="quantity" min="0" id="platot6" name="platot6" value="0"
+                                                    type="number">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    class="plus-button"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3" style="display: hidden"></div>
+
+                                    <div class="col-span-6 sm:col-span-3"
+                                        style="display: flex; align-items: center; gap: 10px">
+                                        <label for="platot7" class="block text-sm font-medium text-gray-700">
+                                            מיקסר DJ Xone:4D
+                                        </label>
+                                        <div style="display: flex; justify-content: center;">
+                                            <div class="count-input">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                <input class="quantity" min="0" id="platot7" name="platot7" value="0"
+                                                    type="number">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    class="plus-button"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3" style="display: hidden"></div>
+
+                                    <div class="col-span-6 sm:col-span-3"
+                                        style="display: flex; align-items: center; gap: 10px">
+                                        <label for="platot8" class="block text-sm font-medium text-gray-700">
+                                            מיקסר 900NXS2 / A9
+                                        </label>
+                                        <div style="display: flex; justify-content: center;">
+                                            <div class="count-input">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                <input class="quantity" min="0" id="platot8" name="platot8" value="0"
+                                                    type="number">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    class="plus-button"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-3" style="display: hidden"></div>
+
+                                    <div class="col-span-6 sm:col-span-3"
+                                        style="display: flex; align-items: center; gap: 10px">
+                                        <label for="platot9" class="block text-sm font-medium text-gray-700">
+                                            מיקסר V10
+                                        </label>
+                                        <div style="display: flex; justify-content: center;">
+                                            <div class="count-input">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                <input class="quantity" min="0" id="platot9" name="platot9" value="0"
+                                                    type="number">
+                                                <button type="button"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    class="plus-button"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+
+    <div class="hidden sm:block" aria-hidden="true">
+        <div class="py-5">
+            <div class="border-t border-gray-200"></div>
+        </div>
+    </div>
+
+    <button>
+        Submit
+    </button>
+    </form>
+
+    <script>
+
+        const upload_image_input = document.getElementById("file-upload")
+
+        const preview_image = document.getElementById("bannana")
+
+        upload_image_input.addEventListener("change", function (event) {
+
+            const file = event.target.files[0];
+
+            if (file && file.type.startsWith("image/")) {
+
+
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    preview_image.src = e.target.result
+
+                }
+
+                reader.readAsDataURL(file);
+            }
+        })
+    </script>
+
+</body>
+
+</html>
