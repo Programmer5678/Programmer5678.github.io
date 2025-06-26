@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Upload PDF to Cloudinary</title>
+</head>
+
+<body>
+    <h2>Upload a PDF</h2>
+    <input type="file" id="fileInput" accept="application/pdf">
+    <button onclick="uploadFile()">Upload</button>
+    <div id="status"></div>
+
+    <script>
+
+
+        async function uploadFile(blob) {
+
+            const cloudName = 'ddv7n9srn';
+            const uploadPreset = 'mypreset';
+
+            const formData = new FormData();
+            formData.append("file", blob, "form.jpg");
+            formData.append("upload_preset", uploadPreset);
+
+            const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`, {
+                method: "POST",
+                body: formData
+            });
+
+        }
+
+        // async function uploadFile() {
+        //     const input = document.getElementById('fileInput');
+        //     const file = input.files[0];
+        //     if (!file) return alert("Please select a PDF file.");
+
+        //     const formData = new FormData();
+        //     formData.append("file", file);
+        //     formData.append("upload_preset", uploadPreset);
+
+        //     const status = document.getElementById("status");
+        //     status.textContent = "Uploading...";
+
+        //     try {
+        //         const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`, {
+        //             method: "POST",
+        //             body: formData
+        //         });
+
+        //         const data = await res.json();
+        //         if (data.secure_url) {
+        //             status.innerHTML = `✅ Upload successful: <a href="${data.secure_url}" target="_blank">View PDF</a>`;
+        //         } else {
+        //             throw new Error(data.error?.message || "Unknown error");
+        //         }
+        //     } catch (err) {
+        //         status.textContent = "❌ Upload failed: " + err.message;
+        //     }
+        // }
+
+
+    </script>
+</body>
+
+</html>
