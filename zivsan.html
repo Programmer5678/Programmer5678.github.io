@@ -130,6 +130,19 @@
         #additional_notes {
             overflow: hidden;
         }
+
+        .bullet::before {
+            content: "• ";
+            color: black;
+            /* bullet color */
+            font-weight: bold;
+        }
+
+        .bullet-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
     </style>
 
 </head>
@@ -766,6 +779,107 @@
                                 <div class="col-span-6 sm:col-span-3" style="display: hidden"></div>
 
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
+
+        <div class="md:grid md:grid-cols-3 md:gap-6">
+            <div class="md:col-span-1">
+                <div class="px-4 sm:px-0">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900" style="font-weight: bold;"> פרטי הסכם
+                    </h3>
+                </div>
+            </div>
+            <div class="mt-5 md:mt-0 md:col-span-2">
+                <div>
+                    <div class="shadow overflow-hidden sm:rounded-md">
+                        <div class="px-4 py-5 bg-white sm:p-6 bullet-list">
+
+                            <p class="bullet block text-sm font-medium text-gray-700"> מסוכם בין הצדדים כי במקרה של
+                                ביטול ישלם המזמין דמי ביטול 40%. ואם יבטל המזמין בתווך של 24 שעות, ישלם מחיר מלא. </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                מסוכם כי הציוד יתקבל במצב תקין ויוחזר במצב תקין, כל נזק שייגרם כתוצאה מרשלנות ולא בלאי
+                                סביר יהיה באחריות המזמין, המשכיר ייתקן על חשבונו והשוכר יחויב במחיר התיקון במלואו.
+                            </p>
+
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                זמן התיקון עד 5 ימים. כל יום מעבר לכך יחויב המזמין ב500 שקלים.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                המחיר כולל השכרת ציוד בלבד, במידה והמזמין ירצה ליווי במה לאורך שעות האירוע יהיה זה כרוך
+                                בתשלום נוסף, ובתיאום מראש.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                המשכיר מתחייב כי הציוד יעמוד מוכן לעבודה כ-60 דקות לפני תחילת האירוע לכל המאוחר, במידה
+                                והשוכר הזמין ליווי במה.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                ידוע למזמין במידה כי באחריותו הבלעדית להחזיר את הציוד לאחר שעות העבודה שנקבעו מראש. עם
+                                זאת, אם וכאשר לא יוחזר הציוד בזמן הנקוב, ישלם המזמין על כל יום נוסף 900 ₪ + מע"מ, והחיוב
+                                יחל ישר מהשעה הראשונה המצוינת בהסכם זה.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                חל איסור מוחלט לעבוד עם הציוד במקום פתוח ללא שמשייה, צלונית, שתכסה ותגן על כל הציוד מפני
+                                השמש.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                חל איסור מוחלט לעבוד עם הציוד במסיבות ללא היתר ו/או לכל שימוש אחר שאינו במסגרת החוק.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                חל איסור מוחלט לעבוד עם הציוד באזור חופי הים ובאזורים מדבריים עם סופות חול, לדוגמה מצוקי
+                                דרגות, פסטיבל מדברן, וכל סוג של האירוע אשר נעשה במקום מדברי, מקום עם אבק (חול פודרה) אשר
+                                עלול לחדור למכשירים ולפגוע בתקינותם.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                המזמין מתחייב להצהיר על מקום מדויק של האירוע בו יופעל הציוד. במידה והמזמין יעבוד עם
+                                הציוד במקום אחר ולא במקום בו הצהיר – יחויב המזמין ב-1,500 ₪ + מע"מ על הפרת ההסכם.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                המזמין מתחייב כי הציוד יעבוד במוקד אחד בלבד ולא יקרה מצב בו הציוד עבר ממקום למקום, גם אם
+                                זה בגדר השעות האירוע.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                ציוד אשר יחזור מאזורים מדבריים, חופי הים, מקומות עם אבק, מבלי להודיע למשכיר – יחויב
+                                המזמין 1,500 ₪ + מע"מ בעבור הכנסת המכשירים למעבדה לניקוי והחלפת לחצנים תקולים.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                חל איסור חמור להניח בסביבת הציוד כוסות משקה או מזון מכל סוג. במקרה בו הציוד יינזק כתוצאה
+                                מחדירה של נוזל או שמש, יישא המזמין במלוא מחיר התיקון. במקרים בהם התיקון יארך מעבר ל5
+                                ימים, ישלם 500 שקלים עבור כל יום נוסף.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                במידה והציוד יוחרם ע"י משטרת ישראל מכל סיבה שהיא – יחויב המזמין בכ-800 ₪ + מע"מ בעבור כל
+                                יום, וכן את האחסון על פי מה שמשטרת ישראל קבעה וגובה. כמו כן, אם יוטל קנס כלשהו על המשכיר
+                                – יחויב המזמין במלוא הקנס.
+                            </p>
+
+                            <p class="bullet block text-sm font-medium text-gray-700">
+                                התחשבנות תעשה בתחילת כל שבוע ביום א', ואם לא יעבוד המזמין בהתחייבויות – ישלם המזמין קנס
+                                נוסף של עוד 800 ₪ כל שבוע וכן הוצאות עו"ד.
+                            </p>
+
+
                         </div>
                     </div>
                 </div>
