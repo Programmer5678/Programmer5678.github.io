@@ -154,12 +154,35 @@
         .signature-text {
             padding-bottom: 18px;
         }
+
+        h1 {
+            font-size: 30px !important
+        }
+
+        h3 {
+            padding-top: 20px
+        }
     </style>
 
 </head>
 
 <body class="bg-gray-100">
     <form class="container mx-auto py-5" action="https://formspree.io/f/xdkzpved" method="POST">
+
+        <div class="md:grid md:grid-cols-3 md:gap-6">
+            <div class="md:col-span-1">
+                <div class="px-4 sm:px-0">
+                    <h1 class="text-lg font-medium leading-6 text-gray-900" style="font-weight: bold;">
+                        טופס השכרת ציוד
+                    </h1>
+                </div>
+            </div>
+
+            <div class="mt-5 md:mt-0 md:col-span-2">
+            </div>
+
+
+        </div>
 
         <div class="hidden sm:block" aria-hidden="true">
             <div class="py-5">
@@ -186,20 +209,20 @@
                                             class="block text-sm font-medium text-gray-700">תאריך</label>
                                         <input type="date" id="return_date" name="return_date"
                                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                            req>
+                                            required>
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="id" class="block text-sm font-medium text-gray-700">ת.ז</label>
-                                        <input type="text" id="id" name="id" pattern="\d{9}"
-                                            title="מספר תעודת זהות חוקי" req
+                                        <input type="text" id="id" name="id" pattern="\d{9}" style="text-align: left"
+                                            title="מספר תעודת זהות חוקי" required
                                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="phone" class="block text-sm font-medium text-gray-700">טלפון</label>
                                         <input type="tel" id="phone" name="phone" pattern="^05\d{8}$"
-                                            title="טלפון בפורמט תקני" req
+                                            title="טלפון בפורמט תקני" required
                                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
@@ -209,42 +232,42 @@
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="event_date" class="block text-sm font-medium text-gray-700">תאריך
                                             האירוע</label>
-                                        <input type="date" id="event_date" name="event_date" req
+                                        <input type="date" id="event_date" name="event_date" required
                                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="event_address" class="block text-sm font-medium text-gray-700">כתובת
                                             האירוע</label>
-                                        <input type="text" id="event_address" name="event_address" req
+                                        <input type="text" id="event_address" name="event_address" required
                                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="pickup_date" class="block text-sm font-medium text-gray-700">איסוף
                                             עצמי מתאריך:</label>
-                                        <input type="date" id="pickup_date" name="pickup_date" req
+                                        <input type="date" id="pickup_date" name="pickup_date" required
                                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="pickup_time"
                                             class="block text-sm font-medium text-gray-700">בשעה:</label>
-                                        <input type="time" id="pickup_time" name="pickup_time" req
+                                        <input type="time" id="pickup_time" name="pickup_time" required
                                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="return_date" class="block text-sm font-medium text-gray-700">עד
                                             תאריך:</label>
-                                        <input type="date" id="return_date" name="return_date" req
+                                        <input type="date" id="return_date" name="return_date" required
                                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="return_time"
                                             class="block text-sm font-medium text-gray-700">בשעה:</label>
-                                        <input type="time" id="return_time" name="return_time" req
+                                        <input type="time" id="return_time" name="return_time" required
                                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
@@ -252,7 +275,8 @@
                                         <label for="price" class="block text-sm font-medium text-gray-700">מחיר
                                             ב-&#8362; (לא כולל
                                             מע"מ)</label>
-                                        <input type="number" id="price" name="price" min="0" req
+                                        <input type="number" id="price" name="price" min="0" style="text-align: left;"
+                                            required
                                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
@@ -284,7 +308,7 @@
                                                         class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                                         <span>העלה קובץ תמונה</span>
                                                         <input id="file-upload" name="file-upload" type="file"
-                                                            class="sr-only" accept="image/*" req>
+                                                            class="sr-only" accept="image/*" required>
                                                     </label>
                                                     <p class="pl-1"> או גרור</p>
                                                 </div>
@@ -999,30 +1023,58 @@
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white">
 
-                            <button type="submit"
+                            <button type="submit" id="submit-button"
                                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 שלח
                             </button>
+
+
+                            <div class="flex bg-green-100 rounded-lg p-4 mb-4 text-sm text-green-700" role="alert"
+                                id="success-message" style="display:none">
+                                <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <div>
+                                    <span class="font-medium">הטופס נשלח בהצלחה</span>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
                 </div>
             </div>
 
+        </div>
 
-            <div class="hidden sm:block" aria-hidden="true">
-                <div class="py-5">
-                    <div class="border-t border-gray-200"></div>
-                </div>
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
             </div>
         </div>
 
+        <div class="hidden sm:block" aria-hidden="true" style="opacity:0;">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
 
+        <div class="md:grid md:grid-cols-3 md:gap-6">
+            <div class="md:col-span-1">
+                <div class="px-4 sm:px-0">
+                    <h1 class="text-lg font-medium leading-6 text-gray-900" style="font-weight: bold;">
+                        שירותי מוסיקה
+                    </h1>
+                </div>
+            </div>
 
+            <div class="mt-5 md:mt-0 md:col-span-2">
+            </div>
 
-        <button>
-            Submit
-        </button>
+        </div>
+
     </form>
 
     <script>
@@ -1031,24 +1083,27 @@
 
         const preview_image = document.getElementById("bannana")
 
-        upload_image_input.addEventListener("change", function (event) {
+        function addUploadImageChangeEventHandler() {
 
-            const file = event.target.files[0];
+            upload_image_input.addEventListener("change", function (event) {
 
-            if (file && file.type.startsWith("image/")) {
+                const file = event.target.files[0]; // the uploaded file
+
+                if (file && file.type.startsWith("image/")) {
 
 
-                const reader = new FileReader();
+                    const reader = new FileReader();
 
-                reader.onload = (e) => {
-                    preview_image.src = e.target.result
+                    reader.onload = (e) => {
+                        preview_image.src = e.target.result // once we read the file from the upload - set the preview image to point to the url
 
+                    }
+
+                    reader.readAsDataURL(file); // create url form uploaded image
                 }
+            })
 
-                reader.readAsDataURL(file);
-            }
-        })
-
+        }
 
 
 
@@ -1058,8 +1113,9 @@
 
 
 
-        // html2canvas(document.body).then( c => c.toBlob( (blob) => {console.log(blob)} ,  'image/png', 0.95 ) )
 
+
+        //Runs func(blob) where blob is created from entire page using html2canvas
         function run_function_on_blob_from_screenshot(func) {
             html2canvas(document.body).then(canvas => {
                 canvas.toBlob(blob => {
@@ -1081,8 +1137,7 @@
                 body: formData
             });
 
-            // const data = await res.json();
-            // console.log("Uploaded:", data.secure_url);
+
         }
 
 
@@ -1110,72 +1165,43 @@
             return div
         }
 
+        function disableSubmitShowSuccessMessage() {
+            document.getElementById("submit-button").style.display = "none"
+            document.getElementById("success-message").style.display = "flex"
+        }
 
+        function addSubmitEventHandler() {
+            document.addEventListener("submit", e => {
+                // Prevent the form from reloading the page
+                e.preventDefault();
 
-        document.addEventListener("submit", e => {
+                // Hide the instructions so the full photo can be captured
+                document.getElementById("id-photo-instructions").style.display = "none";
 
-            e.preventDefault(); // prevent page reload
+                // Replace all input and textarea elements with divs
+                // This improves rendering when using html2canvas
+                const inputs = document.querySelectorAll('input, textarea');
+                inputs.forEach(input => {
+                    if (input.type !== 'hidden') {
+                        const newEl = changeInputToDiv(input);
 
-            document.getElementById("id-photo-instructions").style.display = "none";
-
-
-            const inputs = document.querySelectorAll('input, textarea');
-            inputs.forEach(input => {
-                if (input.type !== 'hidden') {
-
-                    newEl = changeInputToDiv(input);
-
-                    if (input.classList.contains("quantity")) {
-                        newEl.style.display = "flex"
-                        newEl.style.justifyContent = "center"
-                        newEl.style.alignItems = "center"
+                        // Center the text for inputs with the 'quantity' class
+                        if (input.classList.contains("quantity")) {
+                            newEl.style.display = "flex";
+                            newEl.style.justifyContent = "center";
+                            newEl.style.alignItems = "center";
+                        }
                     }
+                });
 
-                }
+                disableSubmitShowSuccessMessage()
+
+                // Convert the page to an image blob and upload it
+                run_function_on_blob_from_screenshot(uploadFile);
+
+
             });
 
-
-            run_function_on_blob_from_screenshot(uploadFile);
-        });
-
-
-
-
-
-
-
-
-
-        const elements = document.getElementsByClassName("my-count-input-wrapper");
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].style.opacity = "0.6";
-            elements[i].addEventListener("click", (e) => {
-
-                inputEl = e.currentTarget.querySelector('input[type="number"]');
-
-                buttons = e.currentTarget.querySelectorAll("button")
-                minus_button = buttons[0]
-                plus_button = buttons[1]
-
-                if (e.target == plus_button) {
-                    console.log("hit plus!")
-                    inputEl.stepUp()
-                }
-
-                if (e.target == minus_button) {
-                    console.log("hit minus!")
-                    inputEl.stepDown()
-                }
-
-                if (inputEl.value > 0) {
-                    e.currentTarget.style.opacity = 1;
-                }
-
-                else {
-                    e.currentTarget.style.opacity = 0.6;
-                }
-
-            })
         }
 
 
@@ -1190,96 +1216,171 @@
 
 
 
+        function addClickEventListenersForQuantity() {
 
-        var canvas = document.getElementById("signature-pad")
-        canvas.addEventListener("mousemove", draw);
-        document.addEventListener("mouseup", stop);
-        canvas.addEventListener("mousedown", start);
+            const elements = document.getElementsByClassName("my-count-input-wrapper"); // get the wrapper of quantity elements
 
-        canvas.addEventListener("touchstart", start);
-        document.addEventListener("touchmove", draw);
-        canvas.addEventListener("touchend", stop);
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].style.opacity = "0.6"; // Handle the opacity. we toggle between 0.6 and 1 based on if element was selected
+                elements[i].addEventListener("click", (e) => {
 
-        var ctx = canvas.getContext("2d");
-        var drawing = false;
-        var prevX, prevY;
-        var currX, currY;
-        var signature = document.getElementById('signature-data');
+                    const inputEl = e.currentTarget.querySelector('input[type="number"]');
 
-        document.addEventListener("scroll", (e) => {
-            if (drawing) {
-                e.preventDefault()
+                    const buttons = e.currentTarget.querySelectorAll("button")
+                    const minus_button = buttons[0] //minus button - to decrease quantity
+                    const plus_button = buttons[1] //plus button - to increase quantity
+
+                    if (e.target == plus_button) {
+                        console.log("hit plus!")
+                        inputEl.stepUp() //Increase by 1 if hit plus
+                    }
+
+                    if (e.target == minus_button) {
+                        console.log("hit minus!")
+                        inputEl.stepDown() //Decrease by 1 if hit minus
+                    }
+
+                    if (inputEl.value > 0) {
+                        e.currentTarget.style.opacity = 1; //Toggle opacity depending on value 0--> not "selected" --> 0.6. and positive --> "selected" --> 1
+                    }
+
+                    else {
+                        e.currentTarget.style.opacity = 0.6;
+                    }
+
+                })
             }
-        })
 
-        document.addEventListener("touchmove", (e) => {
-            if (drawing) {
-                e.preventDefault()
-            }
-        }, { passive: false })
-
-        function start(e) {
-
-            console.log("starting to draw", signature.value[0], signature.value[1])
-            drawing = true;
         }
 
-        function stop() {
 
-            if (drawing) {
 
-                console.log("stopping drawing")
-                drawing = false;
-                prevX = prevY = null;
-                signature.value = canvas.toDataURL();
 
+
+
+
+
+        //Implement signature
+        function addCanvasEventListeners() {
+
+
+
+            const canvas = document.getElementById("signature-pad") // where we are drawing - the canvas
+            const signature = document.getElementById('signature-data'); // the hidden input element.
+            const canvasWrapper = document.getElementById("canvas-wrapper") //for clicking to clear signature
+
+
+            //desktop events for draw(moving the mouse while drawing), stop(leave the mouse - even outside element!), start ( start drawing with mouse )
+            canvas.addEventListener("mousemove", draw);
+            document.addEventListener("mouseup", stop);
+            canvas.addEventListener("mousedown", start);
+
+            //mobile events
+            canvas.addEventListener("touchstart", start);
+            document.addEventListener("touchmove", draw);
+            canvas.addEventListener("touchend", stop);
+
+
+            var ctx = canvas.getContext("2d");
+            var drawing = false; //Are we drawing right now? 
+            var prevX, prevY; //Previous canvas pen position
+            var currX, currY; //Current canvas pen position
+
+
+            // פונקציה לניקוי חתימה
+            function clearSignature() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
             }
-        }
-
-        function draw(e) {
 
 
-            if (!drawing) {
-                return;
+            function start(e) {
+
+                console.log("starting to draw", signature.value[0], signature.value[1])
+                drawing = true;
             }
 
-            console.log("well... drawing")
+            function stop() {
 
-            // Test for touchmove event, this requires another property.
-            var clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-            var clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+                if (drawing) {
 
-            console.log(clientX, clientY)
+                    console.log("stopping drawing")
+                    drawing = false;
+                    prevX = prevY = null;
+                    signature.value = canvas.toDataURL();
 
-            currX = clientX - canvas.getBoundingClientRect().left;
-            currY = clientY - canvas.getBoundingClientRect().top;
+                }
+            }
 
-            // console.log(currX, currY)
+            function draw(e) {
 
-            if (!prevX && !prevY) {
-                prevX = currX;
+
+                if (!drawing) { //If we arent drawing --> event does nothing
+                    return;
+                }
+
+                console.log("well... drawing")
+
+                // Test for touchmove event, this requireduires another property.
+                var clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                var clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+
+                console.log(clientX, clientY)
+
+                currX = clientX - canvas.getBoundingClientRect().left;
+                currY = clientY - canvas.getBoundingClientRect().top;
+
+                // console.log(currX, currY)
+
+                if (!prevX && !prevY) { //No previous position - this is first position
+                    prevX = currX;
+                    prevY = currY;
+                }
+
+                ctx.beginPath(); //Start moving the canvas pen
+                ctx.moveTo(prevX, prevY); // start position
+                ctx.lineTo(currX, currY); //end position
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.closePath();
+
+                prevX = currX; //Now the previous position for next draws
                 prevY = currY;
             }
 
-            ctx.beginPath();
-            ctx.moveTo(prevX, prevY);
-            ctx.lineTo(currX, currY);
-            ctx.strokeStyle = 'black';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            ctx.closePath();
 
-            prevX = currX;
-            prevY = currY;
+
+
+            function addTheEventListeners() {
+
+                canvasWrapper.addEventListener("click", clearSignature)
+
+
+                document.addEventListener("scroll", (e) => { //prevent scroll while drawing
+                    if (drawing) {
+                        e.preventDefault()
+                    }
+                })
+
+                document.addEventListener("touchmove", (e) => { //prevent scroll(mobile) while drawing
+                    if (drawing) {
+                        e.preventDefault()
+                    }
+                }, { passive: false })
+
+            }
+
+            addTheEventListeners()
+
+
         }
 
-        // פונקציה לניקוי חתימה
-        function clearSignature() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        }
 
-        var canvasWrapper = document.getElementById("canvas-wrapper")
-        canvasWrapper.addEventListener("click", clearSignature)
+
+        addSubmitEventHandler()
+        addUploadImageChangeEventHandler()
+        addClickEventListenersForQuantity()
+        addCanvasEventListeners()
 
 
 
