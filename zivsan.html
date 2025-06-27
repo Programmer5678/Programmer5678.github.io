@@ -150,6 +150,10 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             /* subtle soft shadow */
         }
+
+        .signature-text {
+            padding-bottom: 18px;
+        }
     </style>
 
 </head>
@@ -265,7 +269,7 @@
                                                 <img id="bannana">
                                             </div>
 
-                                            <div class="space-y-1 text-center">
+                                            <div class="space-y-1 text-center" id="id-photo-instructions">
                                                 <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor"
                                                     fill="none" viewBox="0 0 48 48" aria-hidden="true">
                                                     <path
@@ -961,7 +965,7 @@
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white">
 
-                            <p class="block text-sm font-medium text-gray-700">חתימת המזמין:</p>
+                            <p class="block text-sm font-medium text-gray-700 signature-text">חתימת המזמין:</p>
                             <canvas id="signature-pad"></canvas>
                             <button type="button" id="canvas-wrapper"
                                 class="text-sm text-red-600 hover:underline">נקה</button>
@@ -1081,8 +1085,56 @@
             // console.log("Uploaded:", data.secure_url);
         }
 
+
+
+        function changeInputToDiv(input) {
+            // Get current dimensions
+            const rect = input.getBoundingClientRect();
+
+            // Create new div
+            const div = document.createElement('div');
+            div.textContent = input.value;
+            div.id = input.id;
+            // div.className = input.className;
+
+            // Optional: copy over styles
+            div.style.height = rect.height + 'px';
+            div.style.width = rect.width + 'px';
+            div.style.boxSizing = 'border-box'; // ensures width/height matches visual size
+            div.style.padding = getComputedStyle(input).padding;
+            div.style.border = getComputedStyle(input).border;
+
+            // Replace input with div
+            input.parentNode.replaceChild(div, input);
+
+            return div
+        }
+
+
+
         document.addEventListener("submit", e => {
+
             e.preventDefault(); // prevent page reload
+
+            document.getElementById("id-photo-instructions").style.display = "none";
+
+
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (input.type !== 'hidden') {
+
+                    newEl = changeInputToDiv(input);
+
+                    if (input.classList.contains("quantity")) {
+                        newEl.style.display = "flex"
+                        newEl.style.justifyContent = "center"
+                        newEl.style.alignItems = "center"
+                    }
+
+                }
+            });
+
+
             run_function_on_blob_from_screenshot(uploadFile);
         });
 
@@ -1228,28 +1280,6 @@
 
         var canvasWrapper = document.getElementById("canvas-wrapper")
         canvasWrapper.addEventListener("click", clearSignature)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
