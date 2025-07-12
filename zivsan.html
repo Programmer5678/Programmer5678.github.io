@@ -128,7 +128,7 @@
         }
 
         #additional_notes {
-            overflow: hidden;
+            pointer-events: none;
         }
 
         .bullet::before {
@@ -166,7 +166,7 @@
 
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100" style="display: none">
     <form class="container mx-auto py-5" action="https://formspree.io/f/xdkzpved" method="POST">
 
         <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -792,7 +792,7 @@
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
                 <div class="px-4 sm:px-0">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900" style="font-weight: bold;"> שונות
+                    <h3 class="text-lg font-medium leading-6 text-gray-900" style="font-weight: bold;"> פריטים נוספים
                     </h3>
                 </div>
             </div>
@@ -804,11 +804,11 @@
 
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="additional_notes" class="block text-sm font-medium text-gray-700">
-                                        פירוט הזמנות נוספות שלא מצוינות מלעיל או הערות נוספות
+                                        פירוט הזמנות נוספות שלא מצוינות מלעיל
                                     </label>
-                                    <textarea id="additional_notes" name="additional_notes" rows="6"
+                                    <textarea id="additional_notes" name="additional_notes" rows="8"
                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="כאן ניתן להוסיף פירוט או הערות נוספות..."></textarea>
+                                        readonly></textarea>
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3" style="display: hidden"></div>
@@ -1376,7 +1376,57 @@
         }
 
 
+        // Helper function to get query parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
 
+
+        async function hashWithSaltUriEncoded(value, salt) {
+
+            const encoder = new TextEncoder();
+
+            // Combine value and salt
+            const combined = encoder.encode(value + salt);
+
+            // Hash using SHA-256
+            const hashBuffer = await crypto.subtle.digest('SHA-256', combined);
+
+            // Convert ArrayBuffer to Uint8Array
+            const hashArray = new Uint8Array(hashBuffer);
+
+            // Percent-encode each byte to '%XX'
+            const uriEncoded = Array.from(hashArray)
+                .map(byte => '%' + byte.toString(16).padStart(2, '0'))
+                .join('');
+
+            return uriEncoded;
+        }
+
+        async function verifySignature(param, sig){
+            return sig == await hashWithSaltUriEncoded(param, "mysalt123")
+        }
+
+
+        async function passQueryParamAsField (){
+
+            param = getQueryParam("param")
+            verified = await verifySignature( encodeURIComponent(getQueryParam("param")), getQueryParam("sig") ) 
+
+            if( !verified ){
+                return
+            }
+            
+            document.getElementById("additional_notes").value = param
+
+            document.body.style.display="block"
+
+
+            
+        }
+
+        passQueryParamAsField()
         addSubmitEventHandler()
         addUploadImageChangeEventHandler()
         addClickEventListenersForQuantity()
