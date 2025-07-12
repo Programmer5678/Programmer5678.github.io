@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>מילוי שדה חוזה</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fb;
+            padding: 40px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            resize: vertical;
+            text-align: right;
+            direction: rtl;
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #0078d4;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        #linkOutput {
+            margin-top: 25px;
+            font-size: 1.1em;
+            color: #0078d4;
+            word-break: break-all;
+            direction: ltr;
+            text-align: left;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #eef6fc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #aad4ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="contractForm">
+        <label for="extraItems">
+            כתוב כאן בכתב חופשי את תוכן השדה "פריטים נוספים". תקבל קישור לחוזה דיגיטלי בו שדה זה ימולא אוטומטית
+        </label>
+        <textarea id="extraItems" name="extraItems" placeholder="כתוב כאן..." required></textarea>
+        <button type="submit">צור קישור</button>
+    </form>
+
+    <div id="linkOutput" style="display: none;"></div>
+
+    <script>
+
+
+
+        async function hashWithSaltUriEncoded(value, salt) {
+
+            console.log("passing into hash function: ", value)
+
+
+            const encoder = new TextEncoder();
+
+            // Combine value and salt
+            const combined = encoder.encode(value + salt);
+
+            // Hash using SHA-256
+            const hashBuffer = await crypto.subtle.digest('SHA-256', combined);
+
+            // Convert ArrayBuffer to Uint8Array
+            const hashArray = new Uint8Array(hashBuffer);
+
+            // Percent-encode each byte to '%XX'
+            const uriEncoded = Array.from(hashArray)
+                .map(byte => '%' + byte.toString(16).padStart(2, '0'))
+                .join('');
+
+            return uriEncoded;
+        }
+
+        document.getElementById('contractForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const textareaValue = document.getElementById('extraItems').value;
+
+            // UTF-8 safe URI encoding of param
+            const param = encodeURIComponent(textareaValue);
+
+            // await the async hash function with param + salt
+            const sig = encodeURIComponent(await hashWithSaltUriEncoded(param, "mysalt123"))
+
+            const link = `https://programmer5678.github.io/rentdjequipment.html?param=${param}&sig=${sig}`;
+
+            const linkOutputElement = document.getElementById('linkOutput');
+            linkOutputElement.textContent = link;
+            linkOutputElement.style.display = "block";
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>
